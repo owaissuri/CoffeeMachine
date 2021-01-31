@@ -4,16 +4,16 @@
       "count_n": 2
     },
     "total_items_quantity": {
-      "hot_water": 5000,
-      "hot_milk": 5000,
-      "ginger_syrup": 1000,
-      "sugar_syrup": 1000,
-      "tea_leaves_syrup": 1000
+      "hot_water": 200,
+      "hot_milk": 240,
+      "ginger_syrup": 500,
+      "sugar_syrup": 100,
+      "tea_leaves_syrup": 100
     },
     "beverages": {
       "hot_Milk": {
         "hot_water": 20,
-        "hot_milk": 600,
+        "hot_milk": 300,
       },
       "hot_coffee": {
         "hot_water": 100,
@@ -32,7 +32,6 @@
         "hot_water": 100,
         "ginger_syrup": 30,
         "sugar_syrup": 50,
-        "green_mixture": 30,
 		"caramel_syrup" : 100
       },
 	  "ginger_tea": {

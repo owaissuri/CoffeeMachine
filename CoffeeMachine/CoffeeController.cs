@@ -22,12 +22,15 @@ namespace CoffeeMachine
         public void RunMachine()
         {
             //Test case file location -- feel free to modify the inputs
+            //Read the JSON input files
             var data1 = _file.Read(@"..\\..\\testcase\\T1.JSON");
             var data2 = _file.Read(@"..\\..\\testcase\\T2.JSON");
             var data3 = _file.Read(@"..\\..\\testcase\\T3.JSON");
             var data4 = _file.Read(@"..\\..\\testcase\\T4.JSON");
 
-            //TEST CASES 
+            //TEST CASES -->
+
+            //Initialize the inputs and print the results
             var input1 = _service1.InitializeInput(data1);
             _service1.ProcessBeverage(input1);
 

@@ -13,6 +13,7 @@ namespace CoffeeMachine.Repository
 {
     public class FileRepo : IFile
     {
+        //Method to read the JSON input file from given file location
         public dynamic Read(string path)
         {
             using (StreamReader file = new StreamReader(path))

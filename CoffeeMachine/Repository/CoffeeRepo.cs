@@ -19,6 +19,8 @@ namespace CoffeeMachine.Repository
         {
             _repo = new IndicatorRepo();
         }
+
+        //Method to process json file data into C# objects
         public MachineVM InitializeInput(dynamic data)
         {
             MachineVM model = new MachineVM();
@@ -64,6 +66,8 @@ namespace CoffeeMachine.Repository
 
         }
 
+
+        //Main method to process the inputs of current test case and return result accordingly
         public void ProcessBeverage(MachineVM model)
         {
             if (model != null)
@@ -75,6 +79,7 @@ namespace CoffeeMachine.Repository
                 IEnumerable<MissingIngredients> impossibleBeverages = CheckMissingIngredients(model);
 
                 //Check if it is possible to make each given item through the coffee machine
+                //Print result accordingly
                 foreach (var beverage in model.beverages)
                 {
                     if (impossibleBeverages != null && impossibleBeverages.Any(b => b.beverageName == beverage.name))
@@ -139,13 +144,12 @@ namespace CoffeeMachine.Repository
 
             _repo.ShowLowIngredientIndicator();
             Console.WriteLine();
-            Console.WriteLine("Press Enter for next test case..."); 
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
+            Console.WriteLine("Press Enter for next test case...\n\n\n"); 
             Console.ReadLine();
         }
 
+
+        //Helper method to verify if all the ingredients are available for a particular beverage
         private IEnumerable<MissingIngredients> CheckMissingIngredients(MachineVM model)
         {
             List<Ingredient> itemCount = model.availableItems;

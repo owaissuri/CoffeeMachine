@@ -46,11 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoffeeController.cs" />
+    <Compile Include="Model\AvailableIngredient.cs" />
+    <Compile Include="Model\Beverage.cs" />
+    <Compile Include="Model\Ingredient.cs" />
     <Compile Include="Model\MachineVM.cs" />
+    <Compile Include="Model\MissingIngredients.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CoffeeRepo.cs" />
     <Compile Include="Repository\FileRepo.cs" />
+    <Compile Include="Repository\IndicatorRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

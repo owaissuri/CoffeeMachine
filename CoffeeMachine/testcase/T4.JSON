@@ -1,0 +1,47 @@
+{
+  "machine": {
+    "outlets": {
+      "count_n": 2
+    },
+    "total_items_quantity": {
+      "hot_water": 5000,
+      "hot_milk": 5000,
+      "ginger_syrup": 1000,
+      "sugar_syrup": 1000,
+      "tea_leaves_syrup": 1000
+    },
+    "beverages": {
+      "hot_Milk": {
+        "hot_water": 20,
+        "hot_milk": 600,
+      },
+      "hot_coffee": {
+        "hot_water": 100,
+        "ginger_syrup": 30,
+        "hot_milk": 400,
+        "sugar_syrup": 50,
+        "tea_leaves_syrup": 30
+      },
+      "black_tea": {
+        "hot_water": 300,
+        "ginger_syrup": 30,
+        "sugar_syrup": 50,
+        "tea_leaves_syrup": 30
+      },
+      "russian_coffee": {
+        "hot_water": 100,
+        "ginger_syrup": 30,
+        "sugar_syrup": 50,
+        "green_mixture": 30,
+		"caramel_syrup" : 100
+      },
+	  "ginger_tea": {
+        "hot_water": 100,
+        "ginger_syrup": 30,
+        "sugar_syrup": 50,
+		"brown_sugar": 05,
+        "green_mixture": 30
+      },
+    }
+  }
+}

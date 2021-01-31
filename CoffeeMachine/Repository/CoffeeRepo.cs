@@ -5,23 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CoffeeMachine.Model;
+using CoffeeMachine.Service;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
 namespace CoffeeMachine.Repository
 {
-    public class CoffeeRepo
+    public class CoffeeRepo : ICoffee
     {
-        private List<Ingredient> _lowIngredientIndicator;
-        private IndicatorRepo _repo;
+        private IIndicator _repo;
 
-
-        internal CoffeeRepo(List<Ingredient> _lowIngredientIndicator, IndicatorRepo repo)
+        internal CoffeeRepo()
         {
-            this._lowIngredientIndicator = _lowIngredientIndicator;
-            this._repo = repo;
+            _repo = new IndicatorRepo();
         }
-        internal MachineVM InitializeInput(dynamic data)
+        public MachineVM InitializeInput(dynamic data)
         {
             MachineVM model = new MachineVM();
 
@@ -66,14 +64,14 @@ namespace CoffeeMachine.Repository
 
         }
 
-        internal void ProcessBeverage(MachineVM model)
+        public void ProcessBeverage(MachineVM model)
         {
             if (model != null)
             {
                 List<Ingredient> itemCount = AvailableIngredient.Ingredients;
                 int freeOutlets = model.outlet;
 
-                //Check if ingredients are present for the given beverages; 
+                //Check if All ingredients are present for the given beverages; 
                 IEnumerable<MissingIngredients> impossibleBeverages = CheckMissingIngredients(model);
 
                 //Check if it is possible to make each given item through the coffee machine
@@ -86,30 +84,32 @@ namespace CoffeeMachine.Repository
                     }
                     else
                     {
+                        //Check if coffee machine outlets are available
                         if (freeOutlets > 0)
                         {
                             bool canPrepare = true;
+                            bool printResult = false;
                             foreach (var item in beverage.ingredients)
                             {
                                 if (itemCount.Any(o=> o.name ==  item.name))
                                 {
                                     var currentItem = itemCount.FirstOrDefault(o => o.name == item.name);
-                                    //var currentItemName = itemCount.Where(o => o.name == item.name).Select(o => o.name).First();
-                                    //var currentItemQuantity = itemCount.Where(o => o.name == item.name).Select(o => o.quantity).First();
-
+                                    
                                     if (currentItem.quantity >= item.quantity)
                                     {
-                                        //currentItemQuantity = currentItemQuantity - item.quantity;
                                         currentItem.quantity -= item.quantity;
-                                       //UpdateAvailableIngredient(currentItem);
 
                                     }
                                     else
                                     {
                                         canPrepare = false;
-                                        Console.WriteLine(beverage.name + " cannot be prepared because " + item.name + " is not sufficient");
+                                        if (!printResult)
+                                        {
+                                            Console.WriteLine(beverage.name + " cannot be prepared because " + item.name + " is not sufficient");
+                                            printResult = true;
+                                        }
+                                        
                                         _repo.UpdateLowIngredientIndicator(currentItem);
-                                        break;
                                     }
                                 }
                              
@@ -137,11 +137,11 @@ namespace CoffeeMachine.Repository
             }
             Console.WriteLine();
 
-
-            //temp
             _repo.ShowLowIngredientIndicator();
             Console.WriteLine();
             Console.WriteLine("Press Enter for next test case..."); 
+            Console.WriteLine();
+            Console.WriteLine();
             Console.WriteLine();
             Console.ReadLine();
         }

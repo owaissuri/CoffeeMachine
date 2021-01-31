@@ -57,13 +57,14 @@
     <Compile Include="Repository\CoffeeRepo.cs" />
     <Compile Include="Repository\FileRepo.cs" />
     <Compile Include="Repository\IndicatorRepo.cs" />
+    <Compile Include="Service\ICoffee.cs" />
+    <Compile Include="Service\IFile.cs" />
+    <Compile Include="Service\IIndicator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Service\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
 ﻿using CoffeeMachine.Model;
+using CoffeeMachine.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace CoffeeMachine.Repository
 {
-    internal class IndicatorRepo
+    internal class IndicatorRepo : IIndicator
     {
         private List<Ingredient> _lowIngredientIndicator;
 
-        public IndicatorRepo(List<Ingredient> _lowIngredientIndicator)
+        public IndicatorRepo()
         {
-            this._lowIngredientIndicator = _lowIngredientIndicator;
+            this._lowIngredientIndicator = new List<Ingredient>();
         }
 
-        internal void UpdateLowIngredientIndicator(Ingredient ingredient)
+        public void UpdateLowIngredientIndicator(Ingredient ingredient)
         {
             if(_lowIngredientIndicator.Any(os => os.name  == ingredient.name))
             {
@@ -34,9 +35,9 @@ namespace CoffeeMachine.Repository
             
         }
 
-        internal void ShowLowIngredientIndicator()
+        public void ShowLowIngredientIndicator()
         {
-            if (_lowIngredientIndicator != null)
+            if (_lowIngredientIndicator.Count > 0)
             {
                 Console.WriteLine("---Low Ingredients Indicator---");
                 foreach (var item in _lowIngredientIndicator)
@@ -45,6 +46,11 @@ namespace CoffeeMachine.Repository
                 }
                 Console.WriteLine();
             }
+        }
+
+        public void RefillIngredient(Ingredient item)
+        {
+            //Code to refill ingredients
         }
     }
 }

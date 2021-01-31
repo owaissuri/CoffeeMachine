@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using CoffeeMachine.Model;
+using CoffeeMachine.Service;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
 namespace CoffeeMachine.Repository
 {
-    public class FileRepo
+    public class FileRepo : IFile
     {
         public dynamic Read(string path)
         {
